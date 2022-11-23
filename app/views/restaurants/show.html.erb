@@ -1,0 +1,20 @@
+ <%= render "layouts/header"%>
+ <div class="container mt-5 p-3 border">
+ <h1><%= @restaurant.name %></h1>
+ <h5><%= @restaurant.address %></h5>
+ <p><strong>📞</strong> <%= @restaurant.phone_number %></p>
+ <p><strong>Category:</strong> <%= @restaurant.category %></p>
+ <h2>Reviews</h2>
+ <% @restaurant.reviews.each do |review| %>
+ <div class="card mt-2">
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p style="font-size: 16px"><%= review.content %></p>
+      <footer class="blockquote-footer">Rating: <%= review.rating %></footer>
+    </blockquote>
+  </div>
+</div>
+ <% end %>
+ <br>
+<%= link_to "Add Rating", new_restaurant_review_path(@restaurant), class: "btn btn-primary align-self-top" %>
+ </div>
